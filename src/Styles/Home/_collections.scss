@@ -1,0 +1,91 @@
+.collections {
+    padding: 40px 57px 17px 57px;
+    position: relative;
+
+    p {
+        font-size: 1.4em;
+        font-weight: bold;
+        margin-bottom: 10px;
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: baseline;
+
+        &:hover {
+            span {
+                display: block;
+                // transform: translateX(20px);
+                animation: span-anim 2s;
+
+                .explorer-arrow {
+                    transform: translate(85px, -45%);
+                }
+            }
+        }
+
+        span {
+            // display: none;
+            font-size: 0.6em;
+            color: #54b9c5;
+            position: relative;
+            margin-left: 20px;
+
+            .explorer-arrow {
+                font-size: 1.2em;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    @keyframes span-anim {
+        0% {
+            transform: translate(-20px);
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+    
+    
+    .content {
+        display: flex;
+        position: relative;
+
+        .angle {
+            font-size: 1.8em;
+        }
+
+        .angle-left {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    
+        .angle-right {
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    
+
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .card {
+                border-radius: 3px;
+                width: 16.2%;
+                height: 120px;
+                background-color: aliceblue;
+            }
+        }
+    }
+}

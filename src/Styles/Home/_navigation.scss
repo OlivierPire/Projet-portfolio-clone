@@ -1,0 +1,38 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 40px;
+    align-items: center;
+
+    .left-nav {
+        display: flex;
+        justify-content: space-between;
+        width: 40%;
+    }
+
+    .right-nav {
+        display: flex;
+        width: 20%;
+        align-items: center;
+        justify-content: space-between;
+
+        .icon {
+            font-size: 1.4em;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            
+            img {
+                margin-right: 8px;
+                width: 28px;
+                height: 28px;
+                border-radius: 4px;
+            }
+        }
+    }
+}

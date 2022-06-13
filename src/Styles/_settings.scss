@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+$color-1: #ffffff;
+$color-2: #eeeeee;
+$color-3: #090a0c;
+$color-4: #00adb5;
+@mixin shadow {
+	box-shadow: 0px 7px 9px 0px rgba(0, 0, 0, 0.44);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	// position: relative;
+	margin: 0 auto;
+	font-family: "Roboto", sans-serif;
+	color: $color-1;
+	background-color: $color-3;
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+	color: $color-1;
+}
