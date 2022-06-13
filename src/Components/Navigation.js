@@ -7,11 +7,11 @@ const Navigation = () => {
     return (
         <div className='navigation'>
             <div className="left-nav">
-                <NavLink to={'/'}>Accueil</NavLink>
-                <NavLink to={'/'}>Séries</NavLink>
-                <NavLink to={'/'}>Films</NavLink>
-                <NavLink to={'/'}>Nouveautés les plus regardées</NavLink>
-                <NavLink to={'/'}>Ma liste</NavLink>
+                <NavLink to={'/'} className={(navData) => navData.isActive ? 'nav-active' : ""}>Accueil</NavLink>
+                <NavLink to={'/series'} className={(navData) => navData.isActive ? 'nav-active' : ""}>Séries</NavLink>
+                <NavLink to={'/movies'} className={(navData) => navData.isActive ? 'nav-active' : ""}>Films</NavLink>
+                <NavLink to={'/news'} className={(navData) => navData.isActive ? 'nav-active' : ""}>Nouveautés les plus regardées</NavLink>
+                <NavLink to={'/list'} className={(navData) => navData.isActive ? 'nav-active' : ""}>Ma liste</NavLink>
             </div>
             <div className="right-nav">
                 <FontAwesomeIcon icon={faMagnifyingGlass} className='search-icon icon' />

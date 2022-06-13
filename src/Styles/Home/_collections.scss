@@ -1,8 +1,9 @@
 .collections {
-    padding: 40px 57px 17px 57px;
+    overflow: hidden;
+    padding: 40px 57px 47px 57px;
     position: relative;
 
-    p {
+    .explorer {
         font-size: 1.4em;
         font-weight: bold;
         margin-bottom: 10px;
@@ -13,30 +14,35 @@
 
         &:hover {
             span {
-                display: block;
-                // transform: translateX(20px);
-                animation: span-anim 2s;
+                opacity: 1;
+                animation: span-anim 0.8s;
+            }
 
-                .explorer-arrow {
-                    transform: translate(85px, -45%);
-                }
+            .explorer-arrow {
+                display: block;
+                animation: arrow-anim 0.5s;
             }
         }
 
         span {
-            // display: none;
+            cursor: pointer;
+            transition: 0.8s;
+            opacity: 0;
             font-size: 0.6em;
             color: #54b9c5;
             position: relative;
             margin-left: 20px;
 
-            .explorer-arrow {
-                font-size: 1.2em;
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-            }
+        }
+        .explorer-arrow {
+            cursor: pointer;
+            display: none;
+            font-size: 0.7em;
+            color: #54b9c5;
+            position: absolute;
+            right: -15px;
+            top: 65%;
+            transform: translateY(-50%);
         }
     }
 
@@ -48,6 +54,15 @@
         100% {
             opacity: 1;
             transform: translateX(0px);
+        }
+    }
+
+    @keyframes arrow-anim {
+        0% {
+            right: 70px;
+        }
+        100% {
+            right: -15px;
         }
     }
     
@@ -77,14 +92,50 @@
 
         .cards {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
+            // width: 100%;
 
             .card {
+                // overflow: hidden;$
+                cursor: pointer;
+                margin-right: 8px;
                 border-radius: 3px;
-                width: 16.2%;
+                width: 225px;
                 height: 120px;
                 background-color: aliceblue;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+
+                .hover-infos {
+                    // display: none;
+                    background-color: #54b9c5;
+                    width: 100%;
+                    height: 50%;
+                }
+
+                &:hover {
+                    z-index: 100; 
+                    transform: scale(2);
+                    
+                    .hover-infos {
+                        display: block;
+                    }          
+                }
+
+                .card-title {
+                    position: absolute;
+                    bottom: 0;
+                    font-size: 1em;
+                    padding: 0px 10px 0px 10px;
+                    opacity: 0.8;
+                    font-family: 'Holtwood One SC', serif;
+                }
+
+                img {
+                    border-radius: 3px;
+                    object-fit: cover;
+                    width: 100%;
+                }
             }
         }
     }

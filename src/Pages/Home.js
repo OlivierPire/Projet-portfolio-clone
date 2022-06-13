@@ -19,6 +19,10 @@ const Home = () => {
             <Header />
             <PrincipalMovie />
             <Collections title='Tendances actuelles' />
+            <Collections title='Nouveautés' />
+            <Collections title='Comédies' />
+            <Collections title='Actions' />
+            <Collections title='Horreur' />
         </div>
     );
 };
