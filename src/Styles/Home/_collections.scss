@@ -1,142 +1,185 @@
 .collections {
-    overflow: hidden;
-    padding: 40px 57px 47px 57px;
-    position: relative;
+	overflow: hidden;
+	padding: 40px 57px 0px 57px;
+	margin-top: 40px;
+	position: relative;
 
-    .explorer {
-        font-size: 1.4em;
-        font-weight: bold;
-        margin-bottom: 10px;
-        position: absolute;
-        top: 0;
-        display: flex;
-        align-items: baseline;
+	&:hover {
+		.content {
+			.angle-right-container {
+				.angle-right {
+					display: inline-block;
+				}
+			}
+			.angle-left-container {
+				.angle-left {
+					display: inline-block;
+				}
+			}
+		}
+	}
 
-        &:hover {
-            span {
-                opacity: 1;
-                animation: span-anim 0.8s;
-            }
+	.title {
+		font-size: 1.4em;
+		font-weight: bold;
+		margin-bottom: 10px;
+		position: absolute;
+		top: 0;
+		display: flex;
+		align-items: baseline;
 
-            .explorer-arrow {
-                display: block;
-                animation: arrow-anim 0.5s;
-            }
-        }
+		&:hover {
+			span {
+				opacity: 1;
+				animation: span-anim 0.8s;
+			}
 
-        span {
-            cursor: pointer;
-            transition: 0.8s;
-            opacity: 0;
-            font-size: 0.6em;
-            color: #54b9c5;
-            position: relative;
-            margin-left: 20px;
+			.explorer-arrow {
+				display: block;
+				animation: arrow-anim 0.5s;
+			}
+		}
 
-        }
-        .explorer-arrow {
-            cursor: pointer;
-            display: none;
-            font-size: 0.7em;
-            color: #54b9c5;
-            position: absolute;
-            right: -15px;
-            top: 65%;
-            transform: translateY(-50%);
-        }
-    }
+		span {
+			cursor: pointer;
+			transition: 0.8s;
+			opacity: 0;
+			font-size: 0.6em;
+			color: #54b9c5;
+			position: relative;
+			margin-left: 20px;
+		}
+		.explorer-arrow {
+			cursor: pointer;
+			display: none;
+			font-size: 0.7em;
+			color: #54b9c5;
+			position: absolute;
+			right: -15px;
+			top: 65%;
+			transform: translateY(-50%);
+		}
+	}
 
-    @keyframes span-anim {
-        0% {
-            transform: translate(-20px);
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0px);
-        }
-    }
+	@keyframes span-anim {
+		0% {
+			transform: translate(-20px);
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+			transform: translateX(0px);
+		}
+	}
 
-    @keyframes arrow-anim {
-        0% {
-            right: 70px;
-        }
-        100% {
-            right: -15px;
-        }
-    }
-    
-    
-    .content {
-        display: flex;
-        position: relative;
+	@keyframes arrow-anim {
+		0% {
+			right: 70px;
+		}
+		100% {
+			right: -15px;
+		}
+	}
 
-        .angle {
-            font-size: 1.8em;
-        }
+	.content {
+		display: flex;
+		position: relative;
 
-        .angle-left {
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    
-        .angle-right {
-            position: absolute;
-            right: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    
+		.angle {
+			font-size: 1.8em;
+		}
 
-        .cards {
-            display: flex;
-            // width: 100%;
+		.angle-left-container {
+			position: absolute;
+			border-radius: 3px;
+			height: 100%;
+			background-color: rgba(5, 5, 5, 0.432);
+			width: 67px;
+			left: -72px;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 100;
 
-            .card {
-                // overflow: hidden;$
-                cursor: pointer;
-                margin-right: 8px;
-                border-radius: 3px;
-                width: 225px;
-                height: 120px;
-                background-color: aliceblue;
-                position: relative;
-                display: flex;
-                flex-direction: column;
+			.angle-left {
+				display: none;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translateY(-50%);
+				transition: 0.1s;
+			}
 
-                .hover-infos {
-                    // display: none;
-                    background-color: #54b9c5;
-                    width: 100%;
-                    height: 50%;
-                }
+			&:hover {
+				background-color: rgba(5, 5, 5, 0.582);
+				.angle-left {
+					font-size: 2.5em;
+				}
+			}
+		}
 
-                &:hover {
-                    z-index: 100; 
-                    transform: scale(2);
-                    
-                    .hover-infos {
-                        display: block;
-                    }          
-                }
+		.angle-right-container {
+			position: absolute;
+			border-radius: 3px;
+			height: 100%;
+			background-color: rgba(5, 5, 5, 0.432);
+			width: 67px;
+			right: -60px;
+			top: 50%;
+			transform: translateY(-50%);
 
-                .card-title {
-                    position: absolute;
-                    bottom: 0;
-                    font-size: 1em;
-                    padding: 0px 10px 0px 10px;
-                    opacity: 0.8;
-                    font-family: 'Holtwood One SC', serif;
-                }
+			.angle-right {
+				display: none;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				transition: 0.1s;
+			}
 
-                img {
-                    border-radius: 3px;
-                    object-fit: cover;
-                    width: 100%;
-                }
-            }
-        }
-    }
+			&:hover {
+				background-color: rgba(5, 5, 5, 0.582);
+				.angle-right {
+					font-size: 2.5em;
+				}
+			}
+		}
+
+		.cards {
+			display: flex;
+
+			.card {
+				cursor: pointer;
+				margin-right: 8px;
+				border-radius: 3px;
+				width: 225px;
+				height: 120px;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+
+				.hover-infos {
+					// display: none;
+					background-color: #54b9c5;
+					width: 100%;
+					height: 50%;
+				}
+
+				.card-title {
+					position: absolute;
+					bottom: 0;
+					font-size: 0.7em;
+					padding: 0px 10px 0px 10px;
+					opacity: 0.8;
+					font-family: "Holtwood One SC", serif;
+				}
+
+				img {
+					position: absolute;
+					border-radius: 3px;
+					object-fit: cover;
+					width: 100%;
+				}
+			}
+		}
+	}
 }

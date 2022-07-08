@@ -6,8 +6,12 @@ import axios from "axios";
 const Collections = ({ title }) => {
 	const token = "bb655c84c682ce6fbeff7bc45c202c87";
 	const [movies, setMovies] = useState([]);
+	const [translateCards, setTranslateCards] = useState(0);
+	const [displayArrowLeft, setDisplayArrowLeft] = useState("none");
 
+	console.log(window.innerWidth);
 	useEffect(() => {
+		console.log("content :", document.querySelector(".content").clientWidth);
 		axios
 			.get(
 				"https://api.themoviedb.org/3/trending/all/day?api_key=" +
@@ -15,42 +19,67 @@ const Collections = ({ title }) => {
 					"&language=fr-FR"
 			)
 			.then((data) => setMovies(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/movie/820456/images?api_key=" +
-					token +
-					"&language=en-US"
-			)
-			.then((data) => console.log(data));
+		axios.get(
+			"https://api.themoviedb.org/3/movie/820456/images?api_key=" +
+				token +
+				"&language=en-US"
+		);
+		// .then((data) => console.log(data));
 	}, []);
-
-	console.log(movies);
 
 	return (
 		<div className="collections">
-			<p className="explorer">
+			<span className="title">
 				{title}
 				<span>Tout explorer </span>
-				<FontAwesomeIcon icon={faAngleRight} className="explorer-arrow" />
-			</p>
+				<div className="angle-left-container">
+					<FontAwesomeIcon icon={faAngleRight} className="explorer-arrow" />
+				</div>
+			</span>
 			<div className="content">
-				<FontAwesomeIcon icon={faAngleLeft} className="angle-left angle" />
-				<div className="cards">
+				<div
+					className="angle-left-container"
+					onClick={() =>
+						document.querySelector(".content")
+							? setTranslateCards(
+									translateCards + document.querySelector(".content").clientWidth - 8
+							  )
+							: null
+					}
+				>
+					<FontAwesomeIcon
+						icon={faAngleLeft}
+						className="angle-left angle"
+						style={{ display: translateCards < 0 ? "inline-block" : "none" }}
+					/>
+				</div>
+				<div
+					className="cards"
+					style={{ transform: `translate(${translateCards}px)`, transition: "1s" }}
+				>
 					{movies.map((e) => (
-						<div className="card">
+						<div className="card" key={e.id + e.backdrop_path}>
 							<img
 								key={e.id}
 								src={"https://image.tmdb.org/t/p/w500" + e.backdrop_path}
 								alt=""
 							/>
-                            <p className="card-title">{e.title ? e.title : e.name}</p>
-                            <div className="hover-infos">
-
-                            </div>
+							<p className="card-title">{e.title ? e.title : e.name}</p>
 						</div>
 					))}
 				</div>
-				<FontAwesomeIcon icon={faAngleRight} className="angle-right angle" />
+				<div
+					className="angle-right-container"
+					onClick={() =>
+						document.querySelector(".content")
+							? setTranslateCards(
+									translateCards - document.querySelector(".content").clientWidth + 8
+							  )
+							: null
+					}
+				>
+					<FontAwesomeIcon icon={faAngleRight} className="angle-right angle" />
+				</div>
 			</div>
 		</div>
 	);
