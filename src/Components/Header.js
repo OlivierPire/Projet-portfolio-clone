@@ -13,7 +13,7 @@ const Header = () => {
 			className="header"
 			style={
 				scrollY > 0
-					? { backgroundColor: "black", transition: "0s" }
+					? { backgroundColor: "#141414", transition: "0s" }
 					: {
 							background:
 								"linear-gradient(180deg, rgba(0,0,0,0.7262255243894433) 0%, rgba(9,9,121,0) 100%)",
