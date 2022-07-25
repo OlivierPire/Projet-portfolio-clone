@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Collections = ({ genre, moviesType }) => {
 	const [translateMovies, setTranslateMovies] = useState(0);
 	const [displaySliderProgress, setDisplaySliderProgress] = useState("none");
 	const [displayArrowLeft, setDisplayArrowLeft] = useState("hidden");
 	const [displayArrowRight, setDisplayArrowRight] = useState("hidden");
+	const slider = document.querySelector(".slider");
 
-	console.log(translateMovies);
+	window.addEventListener("resize", () => {
+		setTranslateMovies(0);
+	});
 
 	return (
 		<div className="collections">
@@ -34,9 +37,31 @@ const Collections = ({ genre, moviesType }) => {
 				></div>
 				<div
 					className={
-						translateMovies >= 200 ? "slider-progress-on" : "slider-progress"
+						translateMovies >= 200 && translateMovies < 300
+							? "slider-progress-on"
+							: "slider-progress"
 					}
 					style={{ display: displaySliderProgress }}
+				></div>
+				<div
+					className={
+						translateMovies === 300 ? "slider-progress-on" : "slider-progress"
+					}
+					style={
+						slider && slider.clientWidth < 1106
+							? { display: displaySliderProgress }
+							: { display: "none" }
+					}
+				></div>
+				<div
+					className={
+						translateMovies === 400 ? "slider-progress-on" : "slider-progress"
+					}
+					style={
+						slider && slider.clientWidth < 1106
+							? { display: displaySliderProgress }
+							: { display: "none" }
+					}
 				></div>
 			</div>
 
@@ -65,6 +90,10 @@ const Collections = ({ genre, moviesType }) => {
 							setTranslateMovies(translateMovies - 100);
 						} else if (translateMovies === 200) {
 							setTranslateMovies(translateMovies - 100);
+						} else if (translateMovies === 300) {
+							setTranslateMovies(translateMovies - 100);
+						} else if (translateMovies === 400) {
+							setTranslateMovies(translateMovies - 100);
 						} else if (translateMovies === 233.3) {
 							setTranslateMovies(translateMovies - 33.3);
 						} else if (translateMovies === 0) {
@@ -92,10 +121,14 @@ const Collections = ({ genre, moviesType }) => {
 					onClick={() => {
 						if (translateMovies === 0 || translateMovies === 100) {
 							setTranslateMovies(translateMovies + 100);
-						} else if (translateMovies === 200) {
+						} else if (translateMovies === 200 && slider.clientWidth > 1106) {
 							setTranslateMovies(translateMovies + 33.3);
-						} else if (translateMovies === 233.3) {
+						} else if (translateMovies === 233.3 || translateMovies === 400) {
 							setTranslateMovies(0);
+						} else if (translateMovies === 200 && slider.clientWidth < 1106) {
+							setTranslateMovies(translateMovies + 100);
+						} else if (translateMovies === 300 && slider.clientWidth < 1106) {
+							setTranslateMovies(translateMovies + 100);
 						}
 					}}
 				>
@@ -107,90 +140,3 @@ const Collections = ({ genre, moviesType }) => {
 };
 
 export default Collections;
-
-{
-	/* <div className="collections">
-			<span className="title">
-				{title}
-				<span>Tout explorer </span>
-				<div className="angle-left-container">
-					<FontAwesomeIcon icon={faAngleRight} className="explorer-arrow" />
-				</div>
-			</span>
-			<div className="content">
-				<div
-					className="angle-left-container"
-					onClick={() => {
-						if (displayByIndex === 0) {
-							setDisplayByIndex(2);
-						} else if (displayByIndex === 1) {
-							setDisplayByIndex(0);
-						} else if (displayByIndex === 2) {
-							setDisplayByIndex(1);
-						}
-					}}
-				>
-					<FontAwesomeIcon icon={faAngleLeft} className="angle-left angle" />
-				</div>
-				<div className="cards">
-					{moviesType.map((e, i) => {
-						if (displayByIndex === 0) {
-							return (
-								<div className="card" key={e.id + e.backdrop_path}>
-									<div className="hover-infos"></div>
-									<img
-										key={e.id}
-										src={"https://image.tmdb.org/t/p/w500" + e.backdrop_path}
-										alt=""
-									/>
-									<p className="card-title">{e.title ? e.title : e.name}</p>
-								</div>
-							);
-						} else if (displayByIndex === 1) {
-							if (i > 5) {
-								return (
-									<div className="card" key={e.id + e.backdrop_path}>
-										<div className="hover-infos"></div>
-										<img
-											key={e.id}
-											src={"https://image.tmdb.org/t/p/w500" + e.backdrop_path}
-											alt=""
-										/>
-										<p className="card-title">{e.title ? e.title : e.name}</p>
-									</div>
-								);
-							}
-						} else if (displayByIndex === 2) {
-							if (i > 11) {
-								return (
-									<div className="card" key={e.id + e.backdrop_path}>
-										<div className="hover-infos"></div>
-										<img
-											key={e.id}
-											src={"https://image.tmdb.org/t/p/w500" + e.backdrop_path}
-											alt=""
-										/>
-										<p className="card-title">{e.title ? e.title : e.name}</p>
-									</div>
-								);
-							}
-						}
-					})}
-				</div>
-				<div
-					className="angle-right-container"
-					onClick={() => {
-						if (displayByIndex === 0) {
-							setDisplayByIndex(1);
-						} else if (displayByIndex === 1) {
-							setDisplayByIndex(2);
-						} else if (displayByIndex === 2) {
-							setDisplayByIndex(0);
-						}
-					}}
-				>
-					<FontAwesomeIcon icon={faAngleRight} className="angle-right angle" />
-				</div>
-			</div>
-		</div> */
-}

@@ -30,7 +30,7 @@
 		font-weight: bold;
 		position: absolute;
 		top: -35px;
-		left: 5rem;
+		left: 3.5rem;
 		z-index: 5;
 
 		&:hover {
@@ -98,7 +98,8 @@
 			transition: 0.9s ease-in-out;
 
 			img {
-				max-width: 16.66%;
+				cursor: pointer;
+				max-width: 16.67%;
 				aspect-ratio: 16 / 9;
 				padding: 0.25rem;
 				border-radius: 7px;
@@ -109,7 +110,7 @@
 			visibility: hidden;
 			position: relative;
 			border: none;
-			width: 5rem;
+			width: 3rem;
 			margin: 0.25rem 0;
 			background-color: rgb(0, 0, 0, 0.25);
 			z-index: 2;
@@ -147,191 +148,26 @@
 	}
 }
 
-// .collections {
-// 	overflow: hidden;
-// 	padding: 40px 57px 0px 57px;
-// 	margin-top: 40px;
-// 	position: relative;
+@media screen and (max-width: 1224px) {
+	.collections {
+		.slider-container {
+			.slider {
+				img {
+					max-width: 25%;
+				}
+			}
+		}
+	}
+}
 
-// 	&:hover {
-// 		.content {
-// 			.angle-right-container {
-// 				.angle-right {
-// 					display: inline-block;
-// 				}
-// 			}
-// 			.angle-left-container {
-// 				.angle-left {
-// 					display: inline-block;
-// 				}
-// 			}
-// 		}
-// 	}
-
-// 	.title {
-// 		font-size: 1.4em;
-// 		font-weight: bold;
-// 		margin-bottom: 10px;
-// 		position: absolute;
-// 		top: 0;
-// 		display: flex;
-// 		align-items: baseline;
-
-// 		&:hover {
-// 			span {
-// 				opacity: 1;
-// 				animation: span-anim 0.8s;
-// 			}
-
-// 			.explorer-arrow {
-// 				display: block;
-// 				animation: arrow-anim 0.5s;
-// 			}
-// 		}
-
-// 		span {
-// 			cursor: pointer;
-// 			transition: 0.8s;
-// 			opacity: 0;
-// 			font-size: 0.6em;
-// 			color: #54b9c5;
-// 			position: relative;
-// 			margin-left: 20px;
-// 		}
-// 		.explorer-arrow {
-// 			cursor: pointer;
-// 			display: none;
-// 			font-size: 0.7em;
-// 			color: #54b9c5;
-// 			position: absolute;
-// 			right: -15px;
-// 			top: 65%;
-// 			transform: translateY(-50%);
-// 		}
-// 	}
-
-// 	@keyframes span-anim {
-// 		0% {
-// 			transform: translate(-20px);
-// 			opacity: 0;
-// 		}
-// 		100% {
-// 			opacity: 1;
-// 			transform: translateX(0px);
-// 		}
-// 	}
-
-// 	@keyframes arrow-anim {
-// 		0% {
-// 			right: 70px;
-// 		}
-// 		100% {
-// 			right: -15px;
-// 		}
-// 	}
-
-// 	.content {
-// 		display: flex;
-// 		position: relative;
-
-// 		.angle {
-// 			font-size: 1.8em;
-// 		}
-
-// 		.angle-left-container {
-// 			position: absolute;
-// 			border-radius: 3px;
-// 			height: 100%;
-// 			background-color: transparent;
-// 			width: 67px;
-// 			left: -72px;
-// 			top: 50%;
-// 			transform: translateY(-50%);
-// 			z-index: 100;
-
-// 			.angle-left {
-// 				display: none;
-// 				position: absolute;
-// 				left: 50%;
-// 				top: 50%;
-// 				transform: translateY(-50%);
-// 				transition: 0.1s;
-// 			}
-
-// 			&:hover {
-// 				background-color: #1414147c;
-// 				.angle-left {
-// 					font-size: 2.5em;
-// 				}
-// 			}
-// 		}
-
-// 		.angle-right-container {
-// 			position: absolute;
-// 			border-radius: 3px;
-// 			height: 100%;
-// 			background-color: rgba(5, 5, 5, 0.432);
-// 			width: 67px;
-// 			right: -60px;
-// 			top: 50%;
-// 			transform: translateY(-50%);
-
-// 			.angle-right {
-// 				display: none;
-// 				position: absolute;
-// 				top: 50%;
-// 				left: 50%;
-// 				transform: translate(-50%, -50%);
-// 				transition: 0.1s;
-// 			}
-
-// 			&:hover {
-// 				background-color: rgba(5, 5, 5, 0.582);
-// 				.angle-right {
-// 					font-size: 2.5em;
-// 				}
-// 			}
-// 		}
-
-// 		.cards {
-// 			display: flex;
-
-// 			.card {
-// 				cursor: pointer;
-// 				margin-right: 8px;
-// 				border-radius: 3px;
-// 				width: 225px;
-// 				height: 120px;
-// 				position: relative;
-// 				display: flex;
-// 				flex-direction: column;
-
-// 				.card-title {
-// 					position: absolute;
-// 					display: flex;
-// 					align-items: flex-end;
-// 					bottom: 0;
-// 					font-size: 0.7em;
-// 					padding: 0px 10px 0px 10px;
-// 					opacity: 0.8;
-// 					font-family: "Holtwood One SC", serif;
-// 					width: 100%;
-// 					height: 100%;
-// 					background: rgb(255, 255, 255);
-// 					background: linear-gradient(
-// 						180deg,
-// 						rgba(255, 255, 255, 0) 51%,
-// 						rgba(0, 0, 0, 1) 100%
-// 					);
-// 				}
-
-// 				img {
-// 					position: absolute;
-// 					border-radius: 3px;
-// 					object-fit: cover;
-// 					width: 100%;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+@media screen and (max-width: 785px) {
+	.collections {
+		.slider-container {
+			.slider {
+				img {
+					max-width: 49.9%;
+				}
+			}
+		}
+	}
+}

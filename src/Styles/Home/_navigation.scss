@@ -7,6 +7,7 @@
 
 	a {
 		transition: 0.5s;
+		margin-left: 10px;
 		&:hover {
 			opacity: 0.7;
 		}
@@ -37,13 +38,59 @@
 
 	.right-nav {
 		display: flex;
-		min-width: 250px;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-end;
+		position: absolute;
+		right: 50px;
 
 		@media screen and (max-width: 1030px) {
 			min-width: 120px;
-			// width: 100px;
+
+			.searchbar-off,
+			.searchbar-on {
+				max-width: 150px;
+				margin-right: 10px;
+			}
+		}
+
+		.searchbar-on {
+			display: flex;
+			padding: 6px 8px;
+			border: 2px white solid;
+			background-color: black;
+			width: 250px;
+			animation: load 0.5s;
+			align-items: center;
+
+			@keyframes load {
+				0% {
+					width: 0px;
+				}
+				100% {
+					width: 250px;
+				}
+			}
+
+			input {
+				padding-left: 9px;
+				width: 100%;
+				border: transparent;
+				background-color: black;
+				color: white;
+			}
+		}
+
+		.searchbar-off {
+			border: none;
+			background-color: none;
+
+			.close-search-icon {
+				display: none;
+			}
+
+			input {
+				display: none;
+			}
 		}
 
 		.icon {
@@ -55,6 +102,7 @@
 			display: flex;
 			align-items: center;
 			cursor: pointer;
+			margin-left: 10px;
 
 			img {
 				margin-right: 8px;
@@ -63,5 +111,11 @@
 				border-radius: 4px;
 			}
 		}
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.navigation {
+		padding-left: 10px;
 	}
 }
