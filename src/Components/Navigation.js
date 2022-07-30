@@ -11,10 +11,12 @@ import { useState } from "react";
 
 const Navigation = () => {
 	const [displaySearchBar, setDisplaySearchBar] = useState("searchbar-off");
+
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 	window.addEventListener("resize", () => {
 		setWindowWidth(window.innerWidth);
 	});
+
 	return (
 		<div className="navigation">
 			{windowWidth > 800 ? (
@@ -70,6 +72,11 @@ const Navigation = () => {
 							}}
 						/>
 						<input type="text" placeholder="Titres, personnes, genres"></input>
+						<FontAwesomeIcon
+							icon={faClose}
+							className="close-search-icon"
+							onClick={() => setDisplaySearchBar("searchbar-off")}
+						/>
 					</div>
 					<FontAwesomeIcon icon={faBell} className="bell-icon icon" />
 					<div className="dropdown-menu">
@@ -89,8 +96,16 @@ const Navigation = () => {
 									: setDisplaySearchBar("searchbar-off");
 							}}
 						/>
-						<input type="text" placeholder="Titres, personnes, genres"></input>
-						<FontAwesomeIcon icon={faClose} className="close-search-icon" />
+						<input
+							className="search"
+							type="text"
+							placeholder="Titres, personnes, genres"
+						></input>
+						<FontAwesomeIcon
+							icon={faClose}
+							className="close-search-icon"
+							onClick={() => setDisplaySearchBar("searchbar-off")}
+						/>
 					</div>
 					<NavLink to={"/"}>DIRECT</NavLink>
 					<NavLink to={"/"}>Jeunesse</NavLink>

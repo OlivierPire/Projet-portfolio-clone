@@ -45,6 +45,7 @@
 
 		@media screen and (max-width: 1030px) {
 			min-width: 120px;
+			right: 15px;
 
 			.searchbar-off,
 			.searchbar-on {
@@ -77,6 +78,10 @@
 				border: transparent;
 				background-color: black;
 				color: white;
+
+				&:focus-visible {
+					outline: none;
+				}
 			}
 		}
 
@@ -117,5 +122,9 @@
 @media screen and (max-width: 900px) {
 	.navigation {
 		padding-left: 10px;
+
+		.browse {
+			font-size: 0.8em;
+		}
 	}
 }
