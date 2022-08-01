@@ -117,7 +117,11 @@ const Collections = ({ genre, moviesType }) => {
 				</div>
 				<button
 					className="arrows right-arrow"
-					style={{ visibility: displayArrowRight }}
+					style={
+						window.innerWidth < "510"
+							? { display: "none" }
+							: { visibility: displayArrowRight }
+					}
 					onClick={() => {
 						if (translateMovies === 0 || translateMovies === 100) {
 							setTranslateMovies(translateMovies + 100);

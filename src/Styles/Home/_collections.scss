@@ -18,6 +18,7 @@
 			height: 2px;
 			background-color: #4d4d4d;
 		}
+
 		.slider-progress-on {
 			display: none;
 			width: 15px;
@@ -167,6 +168,20 @@
 				img {
 					max-width: 49.9%;
 				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.collections {
+		.slider-container {
+			.slider {
+				overflow: scroll;
+				scrollbar-width: none;
+			}
+			.slider::-webkit-scrollbar {
+				height: 0px;
 			}
 		}
 	}

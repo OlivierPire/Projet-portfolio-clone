@@ -8,6 +8,7 @@ import axios from "axios";
 import Footer from "../Components/Footer";
 import { useMemo } from "react";
 import SearchResults from "../Components/SearchResults";
+import { getAllDatas } from "../CallsApi";
 
 const Home = () => {
 	const token = "bb655c84c682ce6fbeff7bc45c202c87";
@@ -21,7 +22,7 @@ const Home = () => {
 	const [thrillerMovies, setThrillerMovies] = useState([]);
 	const [newTvShow, setNewTvShow] = useState([]);
 	const [kidsTvShow, setKidsTvShow] = useState([]);
-	const [crimeTvShow, SetCrimeTvShow] = useState([]);
+	const [crimeTvShow, setCrimeTvShow] = useState([]);
 	const [actionTvShow, setActionTvShow] = useState([]);
 
 	const [searchMovies, setSearchMovies] = useState([]);
@@ -39,90 +40,35 @@ const Home = () => {
 	}
 
 	useEffect(() => {
-		axios
-			.get(
-				"https://api.themoviedb.org/3/trending/all/day?api_key=" +
-					token +
-					"&language=fr-FR"
-			)
-			.then((data) => setMoviesTrending(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/movie?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=27"
-			)
-			.then((data) => setHorrorMovies(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/movie?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=28"
-			)
-			.then((data) => setActionMovies(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/movie?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=35"
-			)
-			.then((data) => setComedyMovies(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/movie?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=16"
-			)
-			.then((data) => setAnimeMovies(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/movie?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=99"
-			)
-			.then((data) => setDocumentaryMovies(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/movie?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=18"
-			)
-			.then((data) => setDramaMovies(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/movie?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=53"
-			)
-			.then((data) => setThrillerMovies(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/tv?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=10763"
-			)
-			.then((data) => setNewTvShow(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/tv?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=10762"
-			)
-			.then((data) => setKidsTvShow(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/tv?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=80"
-			)
-			.then((data) => SetCrimeTvShow(data.data.results));
-		axios
-			.get(
-				"https://api.themoviedb.org/3/discover/tv?api_key=" +
-					token +
-					"&language=fr-FR&with_genres=10759"
-			)
-			.then((data) => setActionTvShow(data.data.results));
+		getAllDatas().then(
+			([
+				trending,
+				action,
+				comedy,
+				anime,
+				documentary,
+				drama,
+				thriller,
+				newTvShow,
+				kidsTvShow,
+				crimeTvShow,
+				actionTvShow,
+				horror,
+			]) => {
+				setMoviesTrending(trending.data.results);
+				setActionMovies(action.data.results);
+				setComedyMovies(comedy.data.results);
+				setAnimeMovies(anime.data.results);
+				setDocumentaryMovies(documentary.data.results);
+				setDramaMovies(drama.data.results);
+				setThrillerMovies(thriller.data.results);
+				setNewTvShow(newTvShow.data.results);
+				setKidsTvShow(kidsTvShow.data.results);
+				setCrimeTvShow(crimeTvShow.data.results);
+				setActionTvShow(actionTvShow.data.results);
+				setHorrorMovies(horror.data.results);
+			}
+		);
 	}, []);
 
 	let searchBar = document.querySelector(".search");
@@ -155,17 +101,17 @@ const Home = () => {
 					<Collections moviesType={horrorMovies} genre="Horreur" />
 					<Collections moviesType={comedyMovies} genre="Comédies" />
 					<Collections moviesType={actionMovies} genre="Actions" />
-					<Collections moviesType={animeMovies} genre="Animation" />
-					<Collections moviesType={thrillerMovies} genre="Thriller" />
-					<Collections moviesType={dramaMovies} genre="Drame" />
-					<Collections moviesType={documentaryMovies} genre="Documentaires" />
 					<Collections moviesType={newTvShow} genre="Nouveautés séries" />
-					<Collections moviesType={kidsTvShow} genre="Séries pour enfants" />
+					<Collections moviesType={documentaryMovies} genre="Documentaires" />
+					<Collections moviesType={animeMovies} genre="Animation" />
 					<Collections moviesType={crimeTvShow} genre="Séries policières" />
+					<Collections moviesType={thrillerMovies} genre="Thriller" />
 					<Collections
 						moviesType={actionTvShow}
 						genre="Séries d'action et d'aventure"
 					/>
+					<Collections moviesType={dramaMovies} genre="Drame" />
+					<Collections moviesType={kidsTvShow} genre="Séries pour enfants" />
 				</React.Fragment>
 			) : (
 				<SearchResults moviesType={searchMovies} genre="Documentaires" />

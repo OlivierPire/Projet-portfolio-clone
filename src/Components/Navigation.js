@@ -5,14 +5,21 @@ import {
 	faMagnifyingGlass,
 	faBell,
 	faCaretDown,
+	faCaretUp,
 	faClose,
+	faPen,
+	faUser,
+	faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import ProfileDropdown from "./ProfileDropdown";
+import BrowseDropdown from "./BrowseDropdown";
 
 const Navigation = () => {
 	const [displaySearchBar, setDisplaySearchBar] = useState("searchbar-off");
-
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	const [isDropdownDisplay, setIsDropdownDisplay] = useState(false);
+	const [isBrowseDisplay, setIsBrowseDisplay] = useState(false);
 	window.addEventListener("resize", () => {
 		setWindowWidth(window.innerWidth);
 	});
@@ -53,9 +60,15 @@ const Navigation = () => {
 					</NavLink>
 				</div>
 			) : (
-				<div className="browse">
+				<div
+					className="browse"
+					onMouseOver={() => setIsBrowseDisplay(true)}
+					onMouseLeave={() => setIsBrowseDisplay(false)}
+				>
 					<span>Parcourir</span>
 					<FontAwesomeIcon icon={faCaretDown} style={{ marginLeft: "5px" }} />
+					<div className="browse-hover"></div>
+					<BrowseDropdown isDisplay={isBrowseDisplay} />
 				</div>
 			)}
 
@@ -79,9 +92,15 @@ const Navigation = () => {
 						/>
 					</div>
 					<FontAwesomeIcon icon={faBell} className="bell-icon icon" />
-					<div className="dropdown-menu">
+					<div
+						className="dropdown-menu"
+						onMouseOver={() => setIsDropdownDisplay(true)}
+						onMouseLeave={() => setIsDropdownDisplay(false)}
+					>
 						<img src="../profile.png" alt="" />
-						<FontAwesomeIcon icon={faCaretDown} />
+						<FontAwesomeIcon icon={faCaretDown} className="caret-rotate" />
+						<div className="block-for-hover"></div>
+						<ProfileDropdown isDisplay={isDropdownDisplay} />
 					</div>
 				</div>
 			) : (
@@ -114,9 +133,15 @@ const Navigation = () => {
 						className="bell-icon icon"
 						style={{ margin: "0 10px" }}
 					/>
-					<div className="dropdown-menu">
+					<div
+						className="dropdown-menu"
+						onMouseOver={() => setIsDropdownDisplay(true)}
+						onMouseLeave={() => setIsDropdownDisplay(false)}
+					>
 						<img src="../profile.png" alt="" />
-						<FontAwesomeIcon icon={faCaretDown} />
+						<FontAwesomeIcon icon={faCaretDown} className="caret-rotate" />
+						<div className="block-for-hover"></div>
+						<ProfileDropdown isDisplay={isDropdownDisplay} />
 					</div>
 				</div>
 			)}
