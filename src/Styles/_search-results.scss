@@ -1,0 +1,39 @@
+.search-results {
+	display: flex;
+	flex-wrap: wrap;
+	width: 94%;
+	margin: 100px auto;
+
+	.img-container {
+		position: relative;
+		max-width: 16.66%;
+
+		img {
+			max-width: 100%;
+			margin-bottom: 40px;
+			padding: 0.25rem;
+			border-radius: 7px;
+			transition: 0.3s;
+			cursor: pointer;
+
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+
+		span {
+			position: absolute;
+			bottom: 20px;
+			padding-top: 10px;
+			left: 0;
+		}
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.search-results {
+		.img-container {
+			max-width: 50%;
+		}
+	}
+}

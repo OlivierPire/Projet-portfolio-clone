@@ -1,0 +1,36 @@
+.browse-dropdown {
+	position: absolute;
+	left: 0;
+	top: 60px;
+	height: 230px;
+	width: 240px;
+	font-size: 1.2em;
+	background-color: rgba(0, 0, 0, 0.89);
+	border-top: 2px solid white;
+
+	.browse-active {
+		color: white;
+	}
+
+	.caret-browse {
+		position: absolute;
+		top: 0;
+		right: 45%;
+		transform: translateY(-65%);
+		font-size: 1.3em;
+	}
+
+	ul {
+		display: flex;
+		flex-direction: column;
+
+		li {
+			margin: 13px;
+			text-align: center;
+
+			a {
+				color: rgba(255, 255, 255, 0.664);
+			}
+		}
+	}
+}

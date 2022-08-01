@@ -8,13 +8,21 @@ import {
 	faClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import ProfileDropdown from "./ProfileDropdown";
+import BrowseDropdown from "./BrowseDropdown";
+
+// Navigation left show browser list or drop-down menu 'parcourir'
+// Navigation right show all elements with desktop version and hide 'DIRECT, Jeunesse' with mobile
 
 const Navigation = () => {
 	const [displaySearchBar, setDisplaySearchBar] = useState("searchbar-off");
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	const [isDropdownDisplay, setIsDropdownDisplay] = useState(false);
+	const [isBrowseDisplay, setIsBrowseDisplay] = useState(false);
 	window.addEventListener("resize", () => {
 		setWindowWidth(window.innerWidth);
 	});
+
 	return (
 		<div className="navigation">
 			{windowWidth > 800 ? (
@@ -32,7 +40,7 @@ const Navigation = () => {
 						Séries
 					</NavLink>
 					<NavLink
-						to={"/movies"}
+						to={"/films"}
 						className={(navData) => (navData.isActive ? "nav-active" : "")}
 					>
 						Films
@@ -51,9 +59,15 @@ const Navigation = () => {
 					</NavLink>
 				</div>
 			) : (
-				<div className="browse">
+				<div
+					className="browse"
+					onMouseOver={() => setIsBrowseDisplay(true)}
+					onMouseLeave={() => setIsBrowseDisplay(false)}
+				>
 					<span>Parcourir</span>
 					<FontAwesomeIcon icon={faCaretDown} style={{ marginLeft: "5px" }} />
+					<div className="browse-hover"></div>
+					<BrowseDropdown isDisplay={isBrowseDisplay} />
 				</div>
 			)}
 
@@ -69,12 +83,27 @@ const Navigation = () => {
 									: setDisplaySearchBar("searchbar-off");
 							}}
 						/>
-						<input type="text" placeholder="Titres, personnes, genres"></input>
+						<input
+							className="search"
+							type="text"
+							placeholder="Titres, personnes, genres"
+						></input>
+						<FontAwesomeIcon
+							icon={faClose}
+							className="close-search-icon"
+							onClick={() => setDisplaySearchBar("searchbar-off")}
+						/>
 					</div>
 					<FontAwesomeIcon icon={faBell} className="bell-icon icon" />
-					<div className="dropdown-menu">
+					<div
+						className="dropdown-menu"
+						onMouseOver={() => setIsDropdownDisplay(true)}
+						onMouseLeave={() => setIsDropdownDisplay(false)}
+					>
 						<img src="../profile.png" alt="" />
-						<FontAwesomeIcon icon={faCaretDown} />
+						<FontAwesomeIcon icon={faCaretDown} className="caret-rotate" />
+						<div className="block-for-hover"></div>
+						<ProfileDropdown isDisplay={isDropdownDisplay} />
 					</div>
 				</div>
 			) : (
@@ -89,8 +118,16 @@ const Navigation = () => {
 									: setDisplaySearchBar("searchbar-off");
 							}}
 						/>
-						<input type="text" placeholder="Titres, personnes, genres"></input>
-						<FontAwesomeIcon icon={faClose} className="close-search-icon" />
+						<input
+							className="search"
+							type="text"
+							placeholder="Titres, personnes, genres"
+						></input>
+						<FontAwesomeIcon
+							icon={faClose}
+							className="close-search-icon"
+							onClick={() => setDisplaySearchBar("searchbar-off")}
+						/>
 					</div>
 					<NavLink to={"/"}>DIRECT</NavLink>
 					<NavLink to={"/"}>Jeunesse</NavLink>
@@ -99,9 +136,15 @@ const Navigation = () => {
 						className="bell-icon icon"
 						style={{ margin: "0 10px" }}
 					/>
-					<div className="dropdown-menu">
+					<div
+						className="dropdown-menu"
+						onMouseOver={() => setIsDropdownDisplay(true)}
+						onMouseLeave={() => setIsDropdownDisplay(false)}
+					>
 						<img src="../profile.png" alt="" />
-						<FontAwesomeIcon icon={faCaretDown} />
+						<FontAwesomeIcon icon={faCaretDown} className="caret-rotate" />
+						<div className="block-for-hover"></div>
+						<ProfileDropdown isDisplay={isDropdownDisplay} />
 					</div>
 				</div>
 			)}
