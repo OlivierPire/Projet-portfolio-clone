@@ -74,8 +74,15 @@
 		}
 		.hero-informations {
 			margin-right: 30px;
+
 			.logo-hero {
 				width: 50%;
+			}
+
+			.hero-buttons {
+				.btn {
+					font-size: 0.8em;
+				}
 			}
 		}
 	}

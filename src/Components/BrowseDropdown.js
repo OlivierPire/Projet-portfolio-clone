@@ -3,6 +3,8 @@ import React from "react";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 
+// Instead of the browse list, show the 'parcourir' drop-down menu for mobile
+
 const BrowseDropdown = ({ isDisplay }) => {
 	return (
 		<div
@@ -23,7 +25,7 @@ const BrowseDropdown = ({ isDisplay }) => {
 				</li>
 				<li>
 					<NavLink
-						to={"/series"}
+						to={"/"}
 						className={(navData) =>
 							navData.isActive ? "browse-active" : "browse-navlink"
 						}
@@ -33,7 +35,7 @@ const BrowseDropdown = ({ isDisplay }) => {
 				</li>
 				<li>
 					<NavLink
-						to={"/movies"}
+						to={"/"}
 						className={(navData) =>
 							navData.isActive ? "browse-active" : "browse-navlink"
 						}
@@ -43,7 +45,7 @@ const BrowseDropdown = ({ isDisplay }) => {
 				</li>
 				<li>
 					<NavLink
-						to={"/news"}
+						to={"/"}
 						className={(navData) =>
 							navData.isActive ? "browse-active" : "browse-navlink"
 						}
@@ -53,7 +55,7 @@ const BrowseDropdown = ({ isDisplay }) => {
 				</li>
 				<li>
 					<NavLink
-						to={"/list"}
+						to={"/"}
 						className={(navData) =>
 							navData.isActive ? "browse-active" : "browse-navlink"
 						}

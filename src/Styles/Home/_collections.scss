@@ -104,6 +104,12 @@
 				aspect-ratio: 16 / 9;
 				padding: 0.25rem;
 				border-radius: 7px;
+				transition: 0.3s;
+
+				&:hover {
+					transform: scale(1.05);
+					animation-duration: 2s;
+				}
 			}
 		}
 

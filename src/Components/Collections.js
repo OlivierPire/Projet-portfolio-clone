@@ -2,6 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
+// Collections is the slider with all movie posters
+// When you click on the arrows, the slider goes left or right with the 'translate' property
+
 const Collections = ({ genre, moviesType }) => {
 	const [translateMovies, setTranslateMovies] = useState(0);
 	const [displaySliderProgress, setDisplaySliderProgress] = useState("none");
@@ -111,7 +114,7 @@ const Collections = ({ genre, moviesType }) => {
 						<img
 							key={e.id}
 							src={"https://image.tmdb.org/t/p/w500" + e.backdrop_path}
-							alt=""
+							alt={"poster of" + e.title}
 						/>
 					))}
 				</div>

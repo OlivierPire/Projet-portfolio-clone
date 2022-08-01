@@ -5,15 +5,14 @@ import {
 	faMagnifyingGlass,
 	faBell,
 	faCaretDown,
-	faCaretUp,
 	faClose,
-	faPen,
-	faUser,
-	faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import ProfileDropdown from "./ProfileDropdown";
 import BrowseDropdown from "./BrowseDropdown";
+
+// Navigation left show browser list or drop-down menu 'parcourir'
+// Navigation right show all elements with desktop version and hide 'DIRECT, Jeunesse' with mobile
 
 const Navigation = () => {
 	const [displaySearchBar, setDisplaySearchBar] = useState("searchbar-off");
@@ -41,7 +40,7 @@ const Navigation = () => {
 						Séries
 					</NavLink>
 					<NavLink
-						to={"/movies"}
+						to={"/films"}
 						className={(navData) => (navData.isActive ? "nav-active" : "")}
 					>
 						Films
@@ -84,7 +83,11 @@ const Navigation = () => {
 									: setDisplaySearchBar("searchbar-off");
 							}}
 						/>
-						<input type="text" placeholder="Titres, personnes, genres"></input>
+						<input
+							className="search"
+							type="text"
+							placeholder="Titres, personnes, genres"
+						></input>
 						<FontAwesomeIcon
 							icon={faClose}
 							className="close-search-icon"

@@ -1,17 +1,20 @@
 import React from "react";
 import Header from "../Components/Header";
 import "../Styles/index.scss";
-import PrincipalMovie from "../Components/PrincipalMovie";
+import HeroMovie from "../Components/HeroMovie";
 import Collections from "../Components/Collections";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../Components/Footer";
 import { useMemo } from "react";
-import SearchResults from "../Components/SearchResults";
+import SearchResults from "../Pages/SearchResults";
 import { getAllDatas } from "../CallsApi";
 
+// After fetching all the data on the callsApi component, the data is stored in useState
+// Then i display all collections for homepage or search results if user use search bar
 const Home = () => {
 	const token = "bb655c84c682ce6fbeff7bc45c202c87";
+
 	const [moviesTrending, setMoviesTrending] = useState([]);
 	const [horrorMovies, setHorrorMovies] = useState([]);
 	const [actionMovies, setActionMovies] = useState([]);
@@ -24,10 +27,10 @@ const Home = () => {
 	const [kidsTvShow, setKidsTvShow] = useState([]);
 	const [crimeTvShow, setCrimeTvShow] = useState([]);
 	const [actionTvShow, setActionTvShow] = useState([]);
-
 	const [searchMovies, setSearchMovies] = useState([]);
 	const [searchRequest, setSearchRequest] = useState("");
 	const [search, setSearch] = useState(false);
+
 	if (searchRequest !== "") {
 		axios
 			.get(
@@ -88,7 +91,7 @@ const Home = () => {
 				});
 			}
 		},
-		[searchBar]
+		[searchBar, closeSearchBar]
 	);
 
 	return (
@@ -96,7 +99,7 @@ const Home = () => {
 			<Header />
 			{search === false || searchRequest === "" ? (
 				<React.Fragment>
-					<PrincipalMovie />
+					<HeroMovie />
 					<Collections moviesType={moviesTrending} genre="Tendances actuelles" />
 					<Collections moviesType={horrorMovies} genre="Horreur" />
 					<Collections moviesType={comedyMovies} genre="Comédies" />
