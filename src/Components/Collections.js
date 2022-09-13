@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import defaultPic from "../assets/hero-background.jpg";
 
 // Collections is the slider with all movie posters
 // When you click on the arrows, the slider goes left or right with the 'translate' property
@@ -113,7 +114,11 @@ const Collections = ({ genre, moviesType }) => {
 					{moviesType.map((e, i) => (
 						<img
 							key={e.id}
-							src={"https://image.tmdb.org/t/p/w500" + e.backdrop_path}
+							src={
+								e.backdrop_path != null || undefined
+									? "https://image.tmdb.org/t/p/w500" + e.backdrop_path
+									: defaultPic
+							}
 							alt={"poster of" + e.title}
 						/>
 					))}

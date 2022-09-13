@@ -6,6 +6,7 @@ import {
 	faUser,
 	faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
+import profileImg from "../assets/profile.png";
 
 const ProfileDropdown = ({ isDisplay }) => {
 	return (
@@ -17,7 +18,7 @@ const ProfileDropdown = ({ isDisplay }) => {
 			<ul className="dropdown-list">
 				<li>
 					{" "}
-					<img src="../profile.png" alt="" />
+					<img src={profileImg} alt="" />
 					Olivier
 				</li>
 				<li>

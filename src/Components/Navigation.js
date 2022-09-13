@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 import ProfileDropdown from "./ProfileDropdown";
 import BrowseDropdown from "./BrowseDropdown";
+import profileImg from "../assets/profile.png";
 
 // Navigation left show browser list or drop-down menu 'parcourir'
 // Navigation right show all elements with desktop version and hide 'DIRECT, Jeunesse' with mobile
@@ -100,7 +101,7 @@ const Navigation = () => {
 						onMouseOver={() => setIsDropdownDisplay(true)}
 						onMouseLeave={() => setIsDropdownDisplay(false)}
 					>
-						<img src="../profile.png" alt="" />
+						<img src={profileImg} alt="" />
 						<FontAwesomeIcon icon={faCaretDown} className="caret-rotate" />
 						<div className="block-for-hover"></div>
 						<ProfileDropdown isDisplay={isDropdownDisplay} />
@@ -141,7 +142,7 @@ const Navigation = () => {
 						onMouseOver={() => setIsDropdownDisplay(true)}
 						onMouseLeave={() => setIsDropdownDisplay(false)}
 					>
-						<img src="../profile.png" alt="" />
+						<img src={profileImg} alt="" />
 						<FontAwesomeIcon icon={faCaretDown} className="caret-rotate" />
 						<div className="block-for-hover"></div>
 						<ProfileDropdown isDisplay={isDropdownDisplay} />
